@@ -81,3 +81,5 @@ class FurcatedTreeTransformer {
         return str += this._closingPMarker
     }
 }
+
+module.exports = FurcatedTreeTransformer
