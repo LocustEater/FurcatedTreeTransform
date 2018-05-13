@@ -1,7 +1,16 @@
 {
   "name": "furcatedtreetransformer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Javascript class to restore furcated trees (forced to expand/collapse nodes to fit a required architecture, like a binary tree) back to their original structure.",
+  "keywords": [
+    "bifurcated",
+    "tree",
+    "binary",
+    "knary",
+    "multifurcated",
+    "parse",
+    "CoreNLP"
+  ],
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
