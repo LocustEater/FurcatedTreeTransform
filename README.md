@@ -1,7 +1,7 @@
 # FurcatedTreeTransform
 **Current status:** In progress.
 
-JS library to restore furcated trees (forced to expand/collapse nodes to fit a required architecture, like a binary tree) back to their original structure.
+Javascript class to restore furcated trees (forced to expand/collapse nodes to fit a required architecture, like a binary tree) back to their original structure.
 
 
 ### Background:
