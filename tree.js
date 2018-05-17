@@ -6,6 +6,26 @@ class FurcatedTreeTransformer {
       this._furcatedTag = furcatedTag
     }
 
+    openPMarker(str = null) {
+      if(str) this._openPMarker = str
+      return this._openPMarker
+    }
+
+    closingPMarker(str = null) {
+      if(str) this.closingPMarker = str
+      return this._closingPMarker
+    }
+
+    labelDelimiter(str = null) {
+      if(str) this.labelDelimiter = str
+      return this._labelDelimiter
+    }
+
+    furcatedTag(str = null) {
+      if(str) this.furcatedTag = str
+      return this._furcatedTag
+    }
+
     fromString(str, visitor) {
       let currentNode = { children: [], parent: {} }
       const openNodes = [currentNode]
@@ -30,23 +50,19 @@ class FurcatedTreeTransformer {
     }
 
     _scrubNode(node, visitor) {
+      const furcatedTagDelimiter = node.str.indexOf(this._furcatedTag) + 1
+      const labelDelimiter = node.str.indexOf(this._labelDelimiter) 
+      
+      if(furcatedTagDelimiter > 0) node.furcated = true
+
+      if(labelDelimiter > -1) {
+        node.label = node.str.substring(furcatedTagDelimiter, labelDelimiter)
+        node.contents = node.str.substring(labelDelimiter + 1)
+        delete node.str
+      }
       if(visitor) {
         visitor(node)
       } 
-      else {
-        const furcatedTagDelimiter = node.str.indexOf(this._furcatedTag) + 1
-        const labelDelimiter = node.str.indexOf(this._labelDelimiter) 
-        
-        if(furcatedTagDelimiter > 0) node.furcated = true
-
-        if(labelDelimiter > -1) {
-          node.label = node.str.substring(furcatedTagDelimiter, labelDelimiter)
-          if(node.label == 'S')
-            console.log('')
-          node.contents = node.str.substring(labelDelimiter + 1)
-          delete node.str
-        }
-      }
     }
 
     unfurcate(node = this._tree) {
